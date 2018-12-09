@@ -13,7 +13,7 @@ Text Domain: RentIt_Date_Changer
 */
 
 /*in this part we decide how the theme should work persian or English all default existing and all added functionality*/
-
+include_once('customizer.php');
 
 //you can change date calender type by adding ?cal_type={calender(jalali|gregorian|hijri)}
 $default= 'gregorian' ;
