@@ -48,7 +48,7 @@ function RentIt_Date_Changer_pass_moment_vars(){
 	wp_localize_script( 'renita_moment-with-locales', 'momentVars',$momentVars );
 }
 //http://localhost/wp-admin/post.php?post=10131&action=edit&cal_type=jalali&cal_lang=fa&cal_format=YYYY%2FMM%2FDD%20H%3Amm
-switch ( cal_type) {
+switch ( $momentVars['date_type']) {
 	case 'jalali':
 		include_once( plugin_dir_path(__FILE__) . 'jalali/enqueue.php' );
 	break;
