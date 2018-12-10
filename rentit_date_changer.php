@@ -17,42 +17,34 @@ include_once('customizer.php');
 
 //you can change date calender type by adding ?cal_type={calender(jalali|gregorian|hijri)}
 $default= 'gregorian' ;
-$date_type = get_theme_mod( 'rentit_rlt_cal_type', $default );
+$momentVars['date_type'] = get_theme_mod( 'rentit_rlt_cal_type', $default );
 if(isset($_GET['cal_type'])){
-	$date_type = $_GET['cal_type'];
+	$momentVars['date_type'] = $_GET['cal_type'];
 }
-define( 'cal_type', $date_type );
+//define( 'cal_type', $date_type );
 
 
 //you can change date calender lang locale by adding ?locale_lang={calender(fa|eng|...)}$default= 'eng' ;
 
 $default= 'en' ;
-$cal_lang = get_theme_mod( 'Other_date_format_lang', $default );
+$momentVars['cal_lang'] = get_theme_mod( 'Other_date_format_lang', $default );
 if(isset($_GET['cal_lang'])){
-	$cal_lang = $_GET['cal_lang'];
+	$momentVars['cal_lang'] = $_GET['cal_lang'];
 }
-define( 'cal_lang', $cal_lang );
+//define( 'cal_lang', $cal_lang );
 
 //you can change date calender lang locale by adding ?locale_lang={calender(fa|eng|...)}$default= 'eng' ;
 
 $default= 'MM/DD/YYYY H:mm' ;
-$cal_format = get_theme_mod( 'Other_date_format_calendar', $default );
+$momentVars['cal_format'] = get_theme_mod( 'Other_date_format_calendar', $default );
 if(isset($_GET['cal_format'])){
-	$cal_format = $_GET['cal_format'];
+	$momentVars['cal_format'] = $_GET['cal_format'];
 }
-define( 'cal_format', $cal_format );
+//define( 'cal_format', $cal_format );
 //pass variable
 add_action( 'admin_enqueue_scripts', 'RentIt_Date_Changer_pass_moment_vars',9999 );
 function RentIt_Date_Changer_pass_moment_vars(){
-	//pass momentVars object to js
-	$momentVars = array(
-		//rentit_rlt_cal_type
-		'cal_type' =>cal_type,
-		//Other_date_format_lang
-		'cal_lang' =>cal_lang,
-		//Other_date_format_calendar
-		'cal_format' =>cal_format
-	);
+	global $momentVars;
 	wp_localize_script( 'renita_moment-with-locales', 'momentVars',$momentVars );
 }
 //http://localhost/wp-admin/post.php?post=10131&action=edit&cal_type=jalali&cal_lang=fa&cal_format=YYYY%2FMM%2FDD%20H%3Amm
