@@ -17,4 +17,6 @@ Note: The strategy is that we send all date for storing and processing by gregor
 */
 /*in this part we decide how the theme should work persian or English all default existing and all added functionality*/
 include_once('customizer.php');
+include_once('moment_format_convertor.php');
 include_once('date_router.php');
+//die;

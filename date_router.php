@@ -37,7 +37,7 @@ function RentIt_Date_Changer_pass_moment_vars(){
 //http://localhost/wp-admin/post.php?post=10131&action=edit&cal_type=jalali&cal_lang=fa&cal_format=YYYY%2FMM%2FDD%20H%3Amm
 switch ( $momentVars['date_type']) {
 	case 'jalali':
-		include_once( plugin_dir_path(__FILE__) . 'jalali/do_all.php' );
+		require_once( 'jalali/do_all.php' );
 	break;
 
 	case 'gregorian':
@@ -51,3 +51,4 @@ switch ( $momentVars['date_type']) {
 	break;
 
 }
+//die;
