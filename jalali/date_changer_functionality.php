@@ -31,11 +31,22 @@ function RentIt_Date_Changer_jalali_to_gregorian_reserve_format($date_time) {
 
 	return $gdate_formatted;
 }
-if(isset($_GET['start_date'])){
-	$_GET['jalali_start_date']=$_GET['start_date'];//set this for further usage eg api of tbt rental sys date
-	$_GET['start_date']=RentIt_Date_Changer_jalali_to_gregorian_reserve_format($_GET['start_date']);//for original theme and plugin
+function RentIt_Date_Changer_set_get_jalali(){
+	if(isset($_GET['start_date'])){
+		$_GET['jalali_start_date']=$_GET['start_date'];//set this for further usage eg api of tbt rental sys date
+		$_GET['start_date']=RentIt_Date_Changer_jalali_to_gregorian_reserve_format($_GET['start_date']);//for original theme and plugin
+	}
+	if(isset($_GET['end_date'])){
+		$_GET['jalali_end_date']=$_GET['end_date'];//set this for further usage eg api of tbt rental sys date
+		$_GET['end_date']=RentIt_Date_Changer_jalali_to_gregorian_reserve_format($_GET['end_date']);//for original theme and plugin
+	}
 }
-if(isset($_GET['end_date'])){
-	$_GET['jalali_end_date']=$_GET['end_date'];//set this for further usage eg api of tbt rental sys date
-	$_GET['end_date']=RentIt_Date_Changer_jalali_to_gregorian_reserve_format($_GET['end_date']);//for original theme and plugin
-}
+
+//add_action( 'parse_request', 'RentIt_Date_Changer_set_get_jalali', 1); NOt WORK
+RentIt_Date_Changer_set_get_jalali();
+/*
+var_dump($_GET['start_date']);
+var_dump($_GET['jalali_start_date']);
+var_dump($_GET['end_date']);
+var_dump($_GET['jalali_end_date']);
+*/
