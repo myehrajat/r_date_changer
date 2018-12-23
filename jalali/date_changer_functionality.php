@@ -33,6 +33,7 @@ require_once('function_order_fixing.php');
 require_once('process_vars_modifier.php');
 require_once('before_cart_set_session.php');
 require_once('update_and_add_order_date.php');
+require_once('exclude_booked.php');
 
 function late_var_dump() {
 
