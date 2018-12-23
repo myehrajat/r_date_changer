@@ -34,7 +34,35 @@ function RentIt_Date_Changer_dequeue_scripts_rtl_support() {
 	wp_deregister_script( 'renita_bootstrap-datetimepicker' );
 }
 function RentIt_Date_Changer_enqueue_scripts_rtl_support() {
+	global $momentVars;
 	//need to be in header because in body it use .datetimepicker() method
-		wp_enqueue_script( 'renita_bootstrap-datetimepicker', plugins_url("bootstrap-datetimepicker-MYEDIT/bootstrap-datetimepicker-rtl-ltr-by-var.min.js",__FILE__ ), array( 'renita_moment-with-locales' ), '4.7.14', true );
-
+	if($momentVars['cal_direction']=='rtl'){
+		wp_enqueue_script( 'renita_bootstrap-datetimepicker', plugins_url("bootstrap-datetimepicker-MYEDIT/bootstrap-datetimepicker-rtl.min.js",__FILE__ ), array( 'renita_moment-with-locales' ), '4.7.14', true );
+}elseif($momentVars['cal_direction']=='ltr'){
+		wp_enqueue_script( 'renita_bootstrap-datetimepicker', plugins_url("bootstrap-datetimepicker-MYEDIT/bootstrap-datetimepicker-ltr.min.js",__FILE__ ), array( 'renita_moment-with-locales' ), '4.7.14', true );
+	}
 }
+register_deactivation_hook( __FILE__, 'RentIt_Date_Changer_deactivate' );
+function RentIt_Date_Changer_deactivate(){
+	remove_theme_mod( 'rentit_date_type' );
+	remove_theme_mod( 'rentit_date_direction' );
+}
+/********************************************************
+debugging part
+*********************************************************//*
+function late_var_dump(){
+	
+	echo '<h2>_GET</h2><pre>';
+	var_dump($_GET);
+	echo '</pre>';
+	echo '<h2>_POST</h2><pre>';
+	var_dump($_POST);
+	echo '</pre>';
+	echo '<h2>_COOKIE</h2><pre>';
+	var_dump($_COOKIE);
+	echo '</pre>';
+	//echo '<h2>_REQUEST</h2><pre>';
+	//var_dump($_REQUEST);
+	//echo '</pre>';
+}
+add_action( 'wp_enqueue_scripts', 'late_var_dump', 3);
