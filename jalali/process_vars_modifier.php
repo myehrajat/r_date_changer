@@ -3,7 +3,7 @@
 this function change variable in process of making order to submit coorectly and show field correctly
 our method is showing jalali and acting on gregorian !
 */
-function rentit_init_site_modifier() {
+function RentIt_Date_Changer_rentit_init_site_modifier() {
 	/**********************
 	POST
 	**********************/

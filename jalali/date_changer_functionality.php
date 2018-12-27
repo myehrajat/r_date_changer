@@ -10,7 +10,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'Gregorian-Jalali-Date-Convertor\gre
 function RentIt_Date_Changer_jalali_to_gregorian_reserve_format( $date_time ) {
 	global $momentVars;
 	$jdate_time_arr = date_parse( $date_time ); //make array detect format automatically
-	$gdate_time_arr = jalali_to_gregorian( $jdate_time_arr[ 'year' ], $jdate_time_arr[ 'month' ], $jdate_time_arr[ 'day' ], false );
+	$gdate_time_arr = jalali_to_gregorian2( $jdate_time_arr[ 'year' ], $jdate_time_arr[ 'month' ], $jdate_time_arr[ 'day' ], false );
 	if ( $jdate_time_arr[ 'minute' ] < 10 ) { //correct time with leading zero
 		$jdate_time_arr[ 'minute' ] = '0' . $jdate_time_arr[ 'minute' ];
 	}
@@ -34,7 +34,7 @@ require_once('process_vars_modifier.php');
 require_once('before_cart_set_session.php');
 require_once('update_and_add_order_date.php');
 require_once('exclude_booked.php');
-
+/*
 function late_var_dump() {
 
 	echo '<h2>_GET</h2><pre>';
@@ -49,8 +49,5 @@ function late_var_dump() {
 	echo '<h2>_SESSION</h2><pre>';
 	var_dump( $_SESSION );
 	echo '</pre>';
-	//echo '<h2>_REQUEST</h2><pre>';
-	//var_dump($_REQUEST);
-	//echo '</pre>';
 }
 //add_action( 'wp_footer', 'late_var_dump', 3 );

@@ -1,5 +1,5 @@
 <?php
-function rentit_add_values_to_order_item_meta2($item_id,$order_id,$values) {
+function RentIt_Date_Changer_rentit_add_values_to_order_item_meta($item_id,$order_id,$values) {
 	wc_update_order_item_meta($item_id, esc_html__( 'Dropping Off Date', 'rentit' ), $values['custom_data_1']['gregorian_dropoff_date'] );
 	wc_update_order_item_meta($item_id,  esc_html__( 'Picking Up Date', 'rentit' ), $values['custom_data_1']['gregorian_dropin_date'] );
 	wc_add_order_item_meta($item_id, esc_html__( 'Jalali Dropping Off Date', 'rentit' ), $values['custom_data_1']['dropoff_date'] );
